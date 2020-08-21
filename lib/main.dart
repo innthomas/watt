@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
         SliverAppBar(
           expandedHeight: 250.0,
           flexibleSpace: FlexibleSpaceBar(
-            title: Text("title"),
+            title: Text("foodie"),
           ),
           pinned: true,
           leading: Drawer(
@@ -66,13 +66,26 @@ class _HomePageState extends State<HomePage> {
             )
           ],
           elevation: 39.0,
-          backgroundColor: Colors.tealAccent.shade700,
+          backgroundColor: Colors.brown[900],
           brightness: Brightness.light,
           centerTitle: true,
-          title: Text("watt"),
+          title: Text(
+            "watt",
+            style: TextStyle(
+                fontStyle: FontStyle.italic,
+                fontSize: 40.0,
+                color: Colors.white,
+                fontWeight: FontWeight.bold),
+          ),
         ),
         SliverToBoxAdapter(
           child: imageCarouselSlider,
+        ),
+        SliverToBoxAdapter(
+          child: Container(
+            height: 200,
+            color: Colors.yellowAccent,
+          ),
         ),
       ],
     );
