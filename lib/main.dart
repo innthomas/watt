@@ -21,6 +21,7 @@ class _HomePageState extends State<HomePage> {
     return CustomScrollView(
       slivers: <Widget>[
         SliverAppBar(
+          leading: IconButton(icon: Icon(Icons.menu), onPressed: () {}),
           //shadowColor: Colors.blueAccent,
           stretch: true,
           floating: true,
@@ -30,7 +31,7 @@ class _HomePageState extends State<HomePage> {
             centerTitle: true,
             background: Image.asset(
               "assets/market.png",
-              fit: BoxFit.fitHeight,
+              fit: BoxFit.cover,
             ),
           ),
 
