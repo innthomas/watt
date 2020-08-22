@@ -21,21 +21,19 @@ class _HomePageState extends State<HomePage> {
     return CustomScrollView(
       slivers: <Widget>[
         SliverAppBar(
+          //shadowColor: Colors.blueAccent,
+          stretch: true,
+          floating: true,
           expandedHeight: 250.0,
           flexibleSpace: FlexibleSpaceBar(
-            title: Text("foodie"),
+            // title: Text("market"),
+            centerTitle: true,
+            background: Image.asset(
+              "assets/market.png",
+              fit: BoxFit.fitHeight,
+            ),
           ),
-          pinned: true,
-          leading: Drawer(
-            elevation: 20.0,
-            semanticLabel: "list",
-            child: IconButton(
-                icon: Icon(
-                  Icons.toys,
-                  color: Colors.brown,
-                ),
-                onPressed: null),
-          ),
+
           actions: <Widget>[
             IconButton(
                 icon: Icon(
@@ -68,12 +66,12 @@ class _HomePageState extends State<HomePage> {
           elevation: 39.0,
           backgroundColor: Colors.brown[900],
           brightness: Brightness.light,
-          centerTitle: true,
+          centerTitle: false,
           title: Text(
             "watt",
             style: TextStyle(
                 fontStyle: FontStyle.italic,
-                fontSize: 40.0,
+                fontSize: 20.0,
                 color: Colors.white,
                 fontWeight: FontWeight.bold),
           ),
@@ -83,9 +81,40 @@ class _HomePageState extends State<HomePage> {
         ),
         SliverToBoxAdapter(
           child: Container(
+            child: Column(
+              children: <Widget>[
+                Center(
+                  child: Text(
+                    "categories",
+                    style: TextStyle(
+                        fontSize: 25.0,
+                        color: Colors.blueAccent,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ],
+            ),
             height: 200,
             color: Colors.yellowAccent,
           ),
+        ),
+        SliverToBoxAdapter(
+          child: imageCarouselSlider,
+        ),
+        SliverToBoxAdapter(
+          child: imageCarouselSlider,
+        ),
+        SliverToBoxAdapter(
+          child: imageCarouselSlider,
+        ),
+        SliverToBoxAdapter(
+          child: imageCarouselSlider,
+        ),
+        SliverToBoxAdapter(
+          child: imageCarouselSlider,
+        ),
+        SliverToBoxAdapter(
+          child: imageCarouselSlider,
         ),
       ],
     );

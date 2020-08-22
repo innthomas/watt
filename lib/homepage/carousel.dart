@@ -4,7 +4,10 @@ import 'package:carousel_pro/carousel_pro.dart';
 
 Widget imageCarouselSlider = Container(
   height: 200.0,
+  width: 80.0,
   child: Carousel(
+    showIndicator: false,
+    dotSpacing: 10.0,
     images: [
       AssetImage("assets/eba.png"),
       AssetImage("assets/chicken.jpg"),
