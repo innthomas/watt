@@ -1,123 +1,135 @@
 import 'package:flutter/material.dart';
-import './homepage/carousel.dart';
+import 'categories/category.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
 void main() {
   runApp(
     MaterialApp(
+      theme: ThemeData(
+        primaryIconTheme: IconThemeData(
+          color: Colors.redAccent,
+        ),
+      ),
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: MyApp(),
     ),
   );
 }
 
-class HomePage extends StatefulWidget {
+class MyApp extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _MyAppState createState() => _MyAppState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: <Widget>[
-        SliverAppBar(
-          leading: IconButton(icon: Icon(Icons.menu), onPressed: () {}),
-          //shadowColor: Colors.blueAccent,
-          stretch: true,
-          floating: true,
-          expandedHeight: 250.0,
-          flexibleSpace: FlexibleSpaceBar(
-            // title: Text("market"),
-            centerTitle: true,
-            background: Image.asset(
-              "assets/market.png",
-              fit: BoxFit.cover,
-            ),
-          ),
-
-          actions: <Widget>[
-            IconButton(
-                icon: Icon(
-                  Icons.search,
-                  color: Colors.white70,
-                ),
-                onPressed: null),
-            SizedBox(
-              width: 20.0,
-            ),
-            IconButton(
-                icon: Icon(
-                  Icons.message,
-                  color: Colors.white70,
-                ),
-                onPressed: null),
-            SizedBox(
-              width: 20.0,
-            ),
-            IconButton(
-                icon: Icon(
-                  Icons.arrow_drop_down_circle,
-                  color: Colors.white70,
-                ),
-                onPressed: null),
-            SizedBox(
-              width: 20.0,
-            )
-          ],
-          elevation: 39.0,
-          backgroundColor: Colors.brown[900],
-          brightness: Brightness.light,
-          centerTitle: false,
-          title: Text(
-            "watt",
-            style: TextStyle(
-                fontStyle: FontStyle.italic,
-                fontSize: 20.0,
-                color: Colors.white,
-                fontWeight: FontWeight.bold),
+    return Scaffold(
+      drawer: Drawer(
+        child: Container(
+          color: Colors.greenAccent[100],
+        ),
+        elevation: 30.0,
+      ),
+      appBar: AppBar(
+        brightness: Brightness.dark,
+        bottomOpacity: 1.0,
+        toolbarHeight: 150.0,
+        toolbarOpacity: 1.0,
+        shadowColor: Colors.tealAccent,
+        elevation: 20.0,
+        actionsIconTheme: IconThemeData(
+          size: 40.0,
+          color: Colors.black87,
+        ),
+        actions: <Widget>[
+          IconButton(
+              icon: Icon(
+                Icons.search,
+                color: Colors.black,
+                size: 40.0,
+              ),
+              onPressed: null),
+          SizedBox(width: 10.0),
+          IconButton(
+              icon: Icon(
+                Icons.message,
+                color: Colors.black,
+              ),
+              onPressed: null),
+          SizedBox(width: 10.0),
+          IconButton(
+              icon: Icon(
+                Icons.arrow_drop_down_circle_sharp,
+                color: Colors.black,
+                size: 40.0,
+              ),
+              onPressed: null),
+          SizedBox(width: 10.0),
+        ],
+        centerTitle: true,
+        backgroundColor: Colors.tealAccent,
+        title: Text(
+          "watt",
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 40.0,
           ),
         ),
-        SliverToBoxAdapter(
-          child: imageCarouselSlider,
-        ),
-        SliverToBoxAdapter(
-          child: Container(
-            child: Column(
-              children: <Widget>[
-                Center(
-                  child: Text(
-                    "categories",
-                    style: TextStyle(
-                        fontSize: 25.0,
-                        color: Colors.blueAccent,
-                        fontWeight: FontWeight.bold),
+      ),
+      body: Container(
+        color: Colors.orangeAccent[100],
+        child: ListView(
+          children: <Widget>[
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  "categories",
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    color: Colors.black87,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-              ],
+              ),
             ),
-            height: 200,
-            color: Colors.yellowAccent,
+            Category(),
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  "products",
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    color: Colors.black87,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+      bottomNavigationBar: CurvedNavigationBar(
+        color: Colors.tealAccent,
+        animationCurve: Curves.easeOut,
+        backgroundColor: Colors.orangeAccent[100],
+        items: <Widget>[
+          Icon(
+            Icons.home_sharp,
           ),
-        ),
-        SliverToBoxAdapter(
-          child: imageCarouselSlider,
-        ),
-        SliverToBoxAdapter(
-          child: imageCarouselSlider,
-        ),
-        SliverToBoxAdapter(
-          child: imageCarouselSlider,
-        ),
-        SliverToBoxAdapter(
-          child: imageCarouselSlider,
-        ),
-        SliverToBoxAdapter(
-          child: imageCarouselSlider,
-        ),
-        SliverToBoxAdapter(
-          child: imageCarouselSlider,
-        ),
-      ],
+          Icon(
+            Icons.account_box_sharp,
+          ),
+          Icon(
+            Icons.shopping_cart_sharp,
+          ),
+          Icon(
+            Icons.card_giftcard_sharp,
+          ),
+        ],
+      ),
     );
   }
 }
