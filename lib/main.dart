@@ -24,6 +24,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  PageController pageController = PageController(initialPage: 0);
+  int pageChanged = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,75 +77,128 @@ class _MyAppState extends State<MyApp> {
         title: Text(
           "watt",
           style: TextStyle(
-              color: Colors.black, fontSize: 40.0, fontFamily: "Sweet Husky"),
+              color: Colors.black, fontSize: 40.0, fontFamily: "Pacifico"),
         ),
       ),
-      body: Container(
-        color: Colors.orangeAccent[100],
-        child: ListView(
-          children: <Widget>[
-            Center(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "categories",
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    color: Colors.black87,
-                    fontWeight: FontWeight.bold,
+      body: PageView(
+        onPageChanged: (index) {
+          setState(
+            () {
+              pageChanged = index;
+            },
+          );
+        },
+        controller: pageController,
+        children: [
+          Container(
+            color: Colors.orangeAccent[100],
+            child: ListView(
+              children: <Widget>[
+                Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      "categories",
+                      style: TextStyle(
+                          fontSize: 20.0,
+                          color: Colors.black87,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: "Pacifico"),
+                    ),
                   ),
                 ),
-              ),
-            ),
-            Category(),
-            Center(
-              child: Padding(
-                padding: const EdgeInsets.all(4.0),
-                child: Text(
-                  "features",
-                  style: TextStyle(
-                    fontSize: 20.0,
-                    color: Colors.black87,
-                    fontWeight: FontWeight.bold,
+                Category(),
+                Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: Text(
+                      "features",
+                      style: TextStyle(
+                          fontSize: 20.0,
+                          color: Colors.black87,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: "Pacifico"),
+                    ),
                   ),
                 ),
-              ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: imageCarouselSlider,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: imageCarouselSlider2,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: imageCarouselSlider,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: imageCarouselSlider2,
+                ),
+              ],
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: imageCarouselSlider,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: imageCarouselSlider2,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: imageCarouselSlider,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: imageCarouselSlider2,
-            ),
-          ],
-        ),
+          ),
+          Container(
+            color: Colors.orangeAccent[100],
+            child: Center(child: Text("Page 1")),
+          ),
+          Container(
+            color: Colors.orangeAccent[100],
+            child: Center(child: Text("Page 2")),
+          ),
+          Container(
+            color: Colors.orangeAccent[100],
+            child: Center(child: Text("Page 3")),
+          ),
+        ],
       ),
       bottomNavigationBar: CurvedNavigationBar(
+        index: 0,
         color: Colors.tealAccent,
         animationCurve: Curves.easeOut,
         backgroundColor: Colors.orangeAccent[100],
         items: <Widget>[
-          Icon(
-            Icons.home_sharp,
+          IconButton(
+            onPressed: () {
+              pageController.animateToPage(0,
+                  duration: Duration(microseconds: 250),
+                  curve: Curves.bounceInOut);
+            },
+            icon: Icon(
+              Icons.home_sharp,
+            ),
           ),
-          Icon(
-            Icons.account_box_sharp,
+          IconButton(
+            onPressed: () {
+              pageController.animateToPage(1,
+                  duration: Duration(microseconds: 250),
+                  curve: Curves.bounceInOut);
+            },
+            icon: Icon(
+              Icons.account_box_sharp,
+            ),
           ),
-          Icon(
-            Icons.shopping_cart_sharp,
+          IconButton(
+            onPressed: () {
+              pageController.animateToPage(2,
+                  duration: Duration(microseconds: 250),
+                  curve: Curves.bounceInOut);
+            },
+            icon: Icon(
+              Icons.shopping_cart_sharp,
+            ),
           ),
-          Icon(
-            Icons.card_giftcard_sharp,
+          IconButton(
+            onPressed: () {
+              pageController.animateToPage(2,
+                  duration: Duration(microseconds: 250),
+                  curve: Curves.bounceInOut);
+            },
+            icon: Icon(
+              Icons.card_giftcard_sharp,
+            ),
           ),
         ],
       ),
