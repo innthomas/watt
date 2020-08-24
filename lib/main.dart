@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:watt/homepage/home_ad.dart';
 import 'categories/category.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'homepage/home_ad2.dart';
 
 void main() {
   runApp(
@@ -114,11 +115,15 @@ class _MyAppState extends State<MyApp> {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: imageCarouselSlider,
+              child: imageCarouselSlider2,
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: imageCarouselSlider,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: imageCarouselSlider2,
             ),
           ],
         ),
