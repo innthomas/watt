@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:watt/homepage/home_ad.dart';
 import 'categories/category.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
@@ -34,7 +35,7 @@ class _MyAppState extends State<MyApp> {
       appBar: AppBar(
         brightness: Brightness.dark,
         bottomOpacity: 1.0,
-        toolbarHeight: 150.0,
+        toolbarHeight: 100.0,
         toolbarOpacity: 1.0,
         shadowColor: Colors.tealAccent,
         elevation: 20.0,
@@ -43,6 +44,7 @@ class _MyAppState extends State<MyApp> {
           color: Colors.black87,
         ),
         actions: <Widget>[
+          SizedBox(width: 10.0),
           IconButton(
               icon: Icon(
                 Icons.search,
@@ -72,9 +74,7 @@ class _MyAppState extends State<MyApp> {
         title: Text(
           "watt",
           style: TextStyle(
-            color: Colors.black,
-            fontSize: 40.0,
-          ),
+              color: Colors.black, fontSize: 40.0, fontFamily: "Sweet Husky"),
         ),
       ),
       body: Container(
@@ -97,9 +97,9 @@ class _MyAppState extends State<MyApp> {
             Category(),
             Center(
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(4.0),
                 child: Text(
-                  "products",
+                  "features",
                   style: TextStyle(
                     fontSize: 20.0,
                     color: Colors.black87,
@@ -107,6 +107,18 @@ class _MyAppState extends State<MyApp> {
                   ),
                 ),
               ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: imageCarouselSlider,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: imageCarouselSlider,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: imageCarouselSlider,
             ),
           ],
         ),
